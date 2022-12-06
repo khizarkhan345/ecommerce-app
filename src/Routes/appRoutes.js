@@ -7,7 +7,7 @@ import Contact from "./components/contact";
 import AboutUs from "./components/aboutUs";
 import Product from "./components/product";
 
-function App() {
+function AppRoutes() {
   return (
     <div className="App my-2">
       <div className="container ">
@@ -26,4 +26,4 @@ function App() {
   );
 }
 
-export default App;
+export default AppRoutes;
