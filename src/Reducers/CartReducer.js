@@ -11,12 +11,9 @@ export default (state = CartDefaultState, action) => {
     case "EDIT_CART":
       return state.map((cart) => {
         if (cart.id === action.id) {
-          return {
-            ...state,
-            ...action.updates,
-          };
+          return { ...cart, ...action.updates };
         } else {
-          return state;
+          return cart;
         }
       });
     default:

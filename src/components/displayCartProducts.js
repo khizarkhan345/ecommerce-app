@@ -1,9 +1,17 @@
 import React from "react";
+import { useState } from "react";
 import { connect } from "react-redux";
 import { RemoveCartProduct, EditCartProduct } from "../Action/CartAction";
+import Input from "./input";
 
 function DisplayCartProducts(props) {
+  const [edit, setEdit] = useState(false);
+  const [inputValue, setInputValue] = useState("");
+  const [id, setId] = useState("");
+
   const handleEdit = (id) => {
+    setEdit(true);
+    setId(id);
     console.log("Handle Edit called");
     //props.dispatch(R(id));
   };
@@ -11,6 +19,20 @@ function DisplayCartProducts(props) {
   const handleDelete = (id) => {
     console.log("Handle Delete called");
     props.dispatch(RemoveCartProduct(id));
+  };
+
+  const handleInput = (e) => {
+    setInputValue(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    console.log(inputValue);
+
+    props.dispatch(EditCartProduct(id, { quantity: inputValue }));
+    setInputValue("");
+    setEdit(false);
   };
   return (
     <div>
@@ -34,7 +56,7 @@ function DisplayCartProducts(props) {
                   className="btn btn-danger"
                   onClick={() => handleEdit(cart.id)}
                 >
-                  Edit
+                  Edit Quantity
                 </button>
               </td>
               <td>
@@ -49,6 +71,15 @@ function DisplayCartProducts(props) {
           ))}
         </tbody>
       </table>
+      {edit ? (
+        <Input
+          value={inputValue}
+          handleChange={handleInput}
+          handleSubmit={handleSubmit}
+        />
+      ) : (
+        ""
+      )}
     </div>
   );
 }
