@@ -4,7 +4,36 @@ export default (state = CartDefaultState, action) => {
   switch (action.type) {
     case "ADD_CART":
       //console.log(action.product);
-      return [...state, action.product];
+      console.log("Add Cart is called");
+      if (state.length === 0) {
+        return [...state, action.product];
+      } else {
+        let bool = false;
+        const oldState = [...state];
+        const newState = state.map((cart) => {
+          if (cart.id === action.id) {
+            //const newQuantity = action.product;
+            //console.log(newQuantity);
+            const prevCart = { ...cart };
+            prevCart.quantity = prevCart.quantity + action.product["quantity"];
+            bool = true;
+            return prevCart;
+          } else {
+            console.log("Else is called");
+            return cart;
+          }
+        });
+
+        console.log("newState", newState);
+
+        if (!bool) {
+          return [...newState, action.product];
+        }
+
+        return newState;
+      }
+
+    //
     case "REMOVE_CART":
       console.log("Remove cart called");
       return state.filter((cart) => cart.id !== action.id);

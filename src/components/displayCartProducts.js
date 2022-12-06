@@ -2,23 +2,29 @@ import React from "react";
 import { useState } from "react";
 import { connect } from "react-redux";
 import { RemoveCartProduct, EditCartProduct } from "../Action/CartAction";
+import { AddStock, ReduceStock } from "../Action/DataAction";
 import Input from "./input";
+import DisplayCart from "./displayCart";
+import { toNumber } from "lodash";
 
 function DisplayCartProducts(props) {
   const [edit, setEdit] = useState(false);
   const [inputValue, setInputValue] = useState("");
+  const [oldQuantity, setOldQuantity] = useState(0);
   const [id, setId] = useState("");
 
-  const handleEdit = (id) => {
+  const handleEdit = (id, oldQuantity) => {
     setEdit(true);
     setId(id);
+    setOldQuantity(oldQuantity);
     console.log("Handle Edit called");
     //props.dispatch(R(id));
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = (id, quantity) => {
     console.log("Handle Delete called");
     props.dispatch(RemoveCartProduct(id));
+    props.dispatch(AddStock(id, toNumber(quantity)));
   };
 
   const handleInput = (e) => {
@@ -31,54 +37,31 @@ function DisplayCartProducts(props) {
     console.log(inputValue);
 
     props.dispatch(EditCartProduct(id, { quantity: inputValue }));
+    if (toNumber(inputValue) > toNumber(oldQuantity)) {
+      let quantity = toNumber(inputValue) - toNumber(oldQuantity);
+      props.dispatch(ReduceStock(id, quantity));
+    } else {
+      const quantity = toNumber(oldQuantity) - toNumber(inputValue);
+      props.dispatch(AddStock(id, quantity));
+    }
     setInputValue("");
     setEdit(false);
   };
   return (
     <div>
       <h2>Cart Data</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Quantity</th>
-            <th>Price</th>
-          </tr>
-        </thead>
-        <tbody>
-          {props.cartData.map((cart) => (
-            <tr key={cart.id}>
-              <td>{cart.title}</td>
-              <td>{cart.quantity}</td>
-              <td>{cart.price}</td>
-              <td>
-                <button
-                  className="btn btn-danger"
-                  onClick={() => handleEdit(cart.id)}
-                >
-                  Edit Quantity
-                </button>
-              </td>
-              <td>
-                <button
-                  className="btn btn-danger"
-                  onClick={() => handleDelete(cart.id)}
-                >
-                  Delete
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      {edit ? (
-        <Input
-          value={inputValue}
-          handleChange={handleInput}
+      {props.cartData.length === 0 ? (
+        <p>Cart is Empty</p>
+      ) : (
+        <DisplayCart
+          cartData={props.cartData}
+          edit={edit}
+          inputValue={inputValue}
+          handleEdit={handleEdit}
+          handleDelete={handleDelete}
+          handleInput={handleInput}
           handleSubmit={handleSubmit}
         />
-      ) : (
-        ""
       )}
     </div>
   );

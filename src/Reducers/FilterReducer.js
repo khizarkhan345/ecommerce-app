@@ -3,6 +3,7 @@ const FilterReducerDefaultState = {
   selectedCategory: "All-categories",
   sortBy: "Price",
   orderBy: "asc",
+  cartDisplay: false,
 };
 
 export default (state = FilterReducerDefaultState, action) => {
@@ -33,6 +34,10 @@ export default (state = FilterReducerDefaultState, action) => {
         ...state,
         sortBy: "rating",
       };
+    case "SET_CART_OPTION":
+      const prevState = { ...state };
+      prevState.cartDisplay = !prevState.cartDisplay;
+      return prevState;
     default:
       return state;
   }

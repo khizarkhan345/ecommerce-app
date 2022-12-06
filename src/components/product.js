@@ -1,9 +1,8 @@
-import { add } from "lodash";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import { getProducts } from "./../apiData/products";
 import { connect } from "react-redux";
 import { AddCartProduct } from "../Action/CartAction";
+import { ReduceStock } from "../Action/DataAction";
 
 function Product(props) {
   const [addToCart, setAddToCart] = useState(0);
@@ -12,7 +11,7 @@ function Product(props) {
 
   const { id } = useParams();
 
-  const products = getProducts();
+  //const products = getProducts();
 
   let product = props.ProductData.filter((product) => product.id == id);
 
@@ -27,11 +26,13 @@ function Product(props) {
       id: product[0].id,
       title: product[0].title,
       quantity: count,
+      stock: product[0].stock,
       price: product[0].price,
     };
 
     //product.count = addToCart;
-    props.dispatch(AddCartProduct(productEdited));
+    props.dispatch(AddCartProduct(product[0].id, productEdited));
+    props.dispatch(ReduceStock(product[0].id, count));
     setCount(1);
   };
 
@@ -48,6 +49,7 @@ function Product(props) {
             <input
               type="number"
               value={count}
+              max={product[0].stock}
               onChange={(e) => setCount(e.target.value)}
             />
             <button
@@ -68,12 +70,14 @@ function Product(props) {
             <img
               src={product[0].images[1]}
               style={{ width: "300px", height: "250px" }}
+              alt=""
             />
           </div>
           <div className="d-block">
             <img
               src={product[0].images[2]}
               style={{ width: "300px", height: "250px" }}
+              alt=""
             />
           </div>
         </div>
@@ -81,6 +85,7 @@ function Product(props) {
 
       <h3>{product[0].title}</h3>
       <p>{product[0].description}</p>
+      <p>Stock: {product[0].stock}</p>
     </div>
   );
 }

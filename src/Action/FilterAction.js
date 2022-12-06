@@ -16,3 +16,7 @@ export const SortBy = (option) => ({
 export const SortByRating = () => ({
   type: "SORT_BY_RATING",
 });
+
+export const SetCartOption = () => ({
+  type: "SET_CART_OPTION",
+});
