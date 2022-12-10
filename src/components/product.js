@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import { AddCartProduct } from "../Action/CartAction";
 import { ReduceStock } from "../Action/DataAction";
+import { toNumber } from "lodash";
 
 function Product(props) {
   const [addToCart, setAddToCart] = useState(0);
@@ -25,36 +26,41 @@ function Product(props) {
     const productEdited = {
       id: product[0].id,
       title: product[0].title,
-      quantity: count,
+      quantity: toNumber(count),
       stock: product[0].stock,
       price: product[0].price,
     };
 
     //product.count = addToCart;
     props.dispatch(AddCartProduct(product[0].id, productEdited));
-    props.dispatch(ReduceStock(product[0].id, count));
+    props.dispatch(ReduceStock(product[0].id, toNumber(count)));
     setCount(1);
   };
 
   return (
     <div className="container">
       <h1>Product Detail</h1>
-      <div className="row m-1 my-3 ">
-        <div className="col-6 vstack">
+      <div className="row m-1 hstack">
+        <div className="col">
           <img
             src={product[0].images[0]}
             style={{ width: "400px", height: "320px" }}
           />
-          <form className="form" onSubmit={handleSubmit}>
+        </div>
+        <div className="col">
+          <h3 className="mb-4">{product[0].title}</h3>
+          <form className="form-group hstack mt-3" onSubmit={handleSubmit}>
             <input
               type="number"
+              className="form-control"
               value={count}
               max={product[0].stock}
+              style={{ width: "8rem", height: "2.2rem" }}
               onChange={(e) => setCount(e.target.value)}
             />
             <button
-              className="btn btn-primary btn-sm m-3"
-              style={{ width: "150px", height: "80px" }}
+              className="btn btn-danger btn-sm m-1"
+              style={{ width: "6rem", height: "2.2rem" }}
               onClick={() => {
                 setAddToCart(count);
                 console.log("Add to Cart: ", addToCart);
@@ -63,29 +69,10 @@ function Product(props) {
               Add to Cart
             </button>
           </form>
-        </div>
-
-        <div className="col-3">
-          <div className="d-block">
-            <img
-              src={product[0].images[1]}
-              style={{ width: "300px", height: "250px" }}
-              alt=""
-            />
-          </div>
-          <div className="d-block">
-            <img
-              src={product[0].images[2]}
-              style={{ width: "300px", height: "250px" }}
-              alt=""
-            />
-          </div>
+          <p className="mt-6">{product[0].description}</p>
+          <p>Stock: {product[0].stock}</p>
         </div>
       </div>
-
-      <h3>{product[0].title}</h3>
-      <p>{product[0].description}</p>
-      <p>Stock: {product[0].stock}</p>
     </div>
   );
 }

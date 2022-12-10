@@ -3,7 +3,7 @@ import { setCategoryFilter } from "../Action/FilterAction";
 
 function ListCategory({ categories, selectedCategory, onCategoryChange }) {
   return (
-    <ul className="list-group">
+    <ul className="list-group list-group-sm">
       {categories.map((category) => (
         <li
           key={category.id}

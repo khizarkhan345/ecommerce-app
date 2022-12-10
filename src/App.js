@@ -6,12 +6,17 @@ import Products from "./components/products";
 import Contact from "./components/contact";
 import AboutUs from "./components/aboutUs";
 import Product from "./components/product";
+import Footer from "./components/Footer/footer";
+import TopBar from "./components/topBar";
+import BottomBar from "./components/bottomBar";
+import DisplayCartProducts from "./components/displayCartProducts";
 
 function App() {
   return (
-    <div className="App my-2">
-      <div className="container ">
+    <div className="App">
+      <div>
         <BrowserRouter>
+          <TopBar />
           <NavBar />
           <Routes>
             <Route path="/" element={<Dashboard />} />
@@ -19,7 +24,10 @@ function App() {
             <Route path="/product/:id" element={<Product />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/aboutus" element={<AboutUs />} />
+            <Route path="/cart" element={<DisplayCartProducts />} />
           </Routes>
+          <Footer />
+          <BottomBar />
         </BrowserRouter>
       </div>
     </div>

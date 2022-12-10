@@ -13,12 +13,14 @@ function DisplayCart(props) {
   } = props;
   return (
     <div>
-      <table>
+      <table className="table table-sm">
         <thead>
           <tr>
             <th>Name</th>
             <th>Quantity</th>
             <th>Price</th>
+            <th></th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -26,7 +28,7 @@ function DisplayCart(props) {
             <tr key={cart.id}>
               <td>{cart.title}</td>
               <td>{cart.quantity}</td>
-              <td>{cart.price}</td>
+              <td>${cart.price}</td>
               <td>
                 <button
                   className="btn btn-danger"

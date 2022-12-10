@@ -18,17 +18,17 @@ function Products(props) {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [pageSize, setPageSize] = useState(4);
+  const [pageSize, setPageSize] = useState(6);
   const [sortOption, setSortOption] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All-categories");
 
   useEffect(() => {
     const category = getCategories();
-    const product = getProducts();
+    //const product = getProducts();
     setCategories([...category]);
     //setProducts([...product]);
-    props.dispatch(AddProduct(product));
+    //props.dispatch(AddProduct(product));
     //product.map((p) => props.dispatch(AddProduct(p)));
   }, []);
 
@@ -85,23 +85,24 @@ function Products(props) {
   return (
     <div className="container">
       <div className="row flex">
-        <div className="col-3">
+        <div className="col-md-3">
           <ListCategory
             categories={categories}
             selectedCategory={props.Filter.selectedCategory}
             onCategoryChange={onCategoryChange}
           />
         </div>
-        <div className="col-md">
-          <DisplaySortOption
-            sortValue={sortOption}
-            onSortOptionChange={onSortOptionChange}
-          />
+        <div className="col">
           <SearchForm
             searchValue={searchTerm}
             handleChange={handleChange}
             handleSearchForm={handleSearchForm}
           />
+          <DisplaySortOption
+            sortValue={sortOption}
+            onSortOptionChange={onSortOptionChange}
+          />
+
           <DisplayProducts products={paginateData} />
           <Pagination
             itemsCount={filteredData.length}

@@ -11,11 +11,13 @@ function SearchForm(props) {
   };
 
   return (
-    <form className="form-group" onSubmit={handleSubmit}>
+    <form className="form-group hstack mb-3" onSubmit={handleSubmit}>
       <input
         type="text"
         value={searchValue}
         placeholder="Search Product"
+        className="form-control"
+        style={{ width: "20rem", marginRight: "0.4rem" }}
         onChange={(event) => handleChange(event.target.value)}
       />
       <button className="btn btn-primary">Search</button>

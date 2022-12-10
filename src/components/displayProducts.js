@@ -8,19 +8,27 @@ function DisplayProducts({ products }) {
         {products.map((product) => (
           <div
             key={product.id}
-            className="col m-2"
-            style={{ border: "1px solid gray" }}
+            className="card text-center m-1"
+            style={{ width: "16rem" }}
           >
-            <img
-              src={product.images[0]}
-              style={{ width: "200px", height: "200px" }}
-            />
-            <h3 className="center">
-              <Link to={`/product/${product.id}`}>{product.title}</Link>
-            </h3>
-            <h4>Price: {product.price}</h4>
-            <h4>Rating: {product.rating}</h4>
-            <p>{product.description}</p>
+            <img src={product.images[0]} alt="" style={{ height: "12rem" }} />
+            <h5 className="card-title mt-3" style={{ fontSize: "15px" }}>
+              {product.title}
+            </h5>
+            <p className="card-text"> ${product.price}</p>
+
+            <p className="card-text">Rating: {product.rating}</p>
+            <button
+              className="btn btn-primary mb-2"
+              style={{ width: "5rem", alignSelf: "center" }}
+            >
+              <Link
+                to={`/product/${product.id}`}
+                style={{ textDecoration: "none", color: "white" }}
+              >
+                View
+              </Link>
+            </button>
           </div>
         ))}
       </div>

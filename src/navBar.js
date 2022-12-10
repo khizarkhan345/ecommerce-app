@@ -13,8 +13,8 @@ function NavBar(props) {
     setCartClicked(!cartClicked);
   };
   return (
-    <div className="hstack">
-      <ul className="nav nav-pills my-2">
+    <div className="d-flex me-5 flex-column flex-md-row ">
+      <ul className="nav nav-pills flex-column flex-md-row">
         <li className="nav-item">
           <NavLink className="nav-link" to="/">
             Home
@@ -36,16 +36,23 @@ function NavBar(props) {
           </NavLink>
         </li>
       </ul>
-      <div className="m-auto">
-        <i
-          className="fa fa-shopping-cart fa-2x"
-          aria-hidden="true"
-          onClick={handleClick}
+      <ul className="ms-md-auto ps-3">
+        <li
+          className="nav-item d-flex flex-row"
+          style={{
+            listStyleType: "none",
+            padding: "2px",
+          }}
         >
-          {props.CartData.length === 0 ? "" : props.CartData.length}
-        </i>
-        {cartClicked ? <DisplayCartProducts /> : ""}
-      </div>
+          <NavLink
+            className="fa fa-shopping-cart fa-2x mt-1"
+            to="/cart"
+          ></NavLink>
+          <p style={{ fontSize: "1.8rem", marginLeft: "10px" }}>
+            Items({props.CartData.length})
+          </p>
+        </li>
+      </ul>
     </div>
   );
 }

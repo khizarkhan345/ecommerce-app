@@ -3,7 +3,6 @@ import { useState } from "react";
 import { connect } from "react-redux";
 import { RemoveCartProduct, EditCartProduct } from "../Action/CartAction";
 import { AddStock, ReduceStock } from "../Action/DataAction";
-import Input from "./input";
 import DisplayCart from "./displayCart";
 import { toNumber } from "lodash";
 
@@ -39,16 +38,16 @@ function DisplayCartProducts(props) {
     props.dispatch(EditCartProduct(id, { quantity: inputValue }));
     if (toNumber(inputValue) > toNumber(oldQuantity)) {
       let quantity = toNumber(inputValue) - toNumber(oldQuantity);
-      props.dispatch(ReduceStock(id, quantity));
+      props.dispatch(ReduceStock(id, toNumber(quantity)));
     } else {
       const quantity = toNumber(oldQuantity) - toNumber(inputValue);
-      props.dispatch(AddStock(id, quantity));
+      props.dispatch(AddStock(id, toNumber(quantity)));
     }
     setInputValue("");
     setEdit(false);
   };
   return (
-    <div>
+    <div className="container">
       <h2>Cart Data</h2>
       {props.cartData.length === 0 ? (
         <p>Cart is Empty</p>
