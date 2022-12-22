@@ -13,6 +13,7 @@ import { AddProduct } from "./../Action/DataAction";
 import { setFilterText, setCategoryFilter } from "../Action/FilterAction";
 import { SortBy } from "./../Action/FilterAction";
 import _ from "lodash";
+import "./products.css";
 
 function Products(props) {
   const [products, setProducts] = useState([]);
@@ -83,8 +84,8 @@ function Products(props) {
   const paginateData = paginate(sortedData, currentPage, pageSize);
 
   return (
-    <div className="container">
-      <div className="row flex">
+    <div className="ms-md-5">
+      <div className="row flex products">
         <div className="col-md-3">
           <ListCategory
             categories={categories}
@@ -92,7 +93,7 @@ function Products(props) {
             onCategoryChange={onCategoryChange}
           />
         </div>
-        <div className="col">
+        <div className="col m-2">
           <SearchForm
             searchValue={searchTerm}
             handleChange={handleChange}

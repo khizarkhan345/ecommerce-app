@@ -12,7 +12,7 @@ const Pagination = (props) => {
 
   return (
     <nav>
-      <ul className="pagination">
+      <ul className="pagination mt-3 justify-content-center">
         {Pages.map((page) => (
           <li
             key={page}

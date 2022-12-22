@@ -5,6 +5,7 @@ import { RemoveCartProduct, EditCartProduct } from "../Action/CartAction";
 import { AddStock, ReduceStock } from "../Action/DataAction";
 import DisplayCart from "./displayCart";
 import { toNumber } from "lodash";
+import "./displayCartProducts.css";
 
 function DisplayCartProducts(props) {
   const [edit, setEdit] = useState(false);
@@ -47,7 +48,7 @@ function DisplayCartProducts(props) {
     setEdit(false);
   };
   return (
-    <div className="container">
+    <div className="container cart">
       <h2>Cart Data</h2>
       {props.cartData.length === 0 ? (
         <p>Cart is Empty</p>

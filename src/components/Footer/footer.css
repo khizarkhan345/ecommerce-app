@@ -11,9 +11,19 @@
 }
 
 .list-group, li {
-   cursor: pointer; 
+   cursor: pointer;
+   text-decoration: none;
 }
 
+.Link-cls {
+    text-decoration: none;
+    color: #4f4e4d;
+ }
+
+ .Link-cls:hover {
+    color: #000;
+ }
+ 
 /* @media screen and (max-width: 480px) {
 
     .footer {
