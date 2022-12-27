@@ -36,6 +36,7 @@ function Products(props) {
   const onCategoryChange = (category) => {
     props.dispatch(setFilterText(""));
     //console.log("Condition true");
+    setCurrentPage(1);
     props.dispatch(setCategoryFilter(category));
   };
 
