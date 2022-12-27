@@ -5,6 +5,7 @@ import SlideShow from "./slideShow";
 import { AddProduct } from "../../Action/DataAction";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { Rating } from "react-simple-star-rating";
 import "./dashboard.css";
 
 function Dashboard(props) {
@@ -34,7 +35,14 @@ function Dashboard(props) {
                   />
                   <h5 className="card-title mt-3">{product.title}</h5>
                   <p className="card-text"> ${product.price}</p>
-                  <button className="btn btn-primary product-button mb-2">
+                  <Rating
+                    initialValue={product.rating}
+                    size={25}
+                    allowFraction
+                    fillColor="orange"
+                    emptyColor="gray"
+                  />
+                  <button className="btn btn-primary product-button m-2">
                     <Link
                       to={`/product/${product.id}`}
                       className="product-link"
