@@ -40,6 +40,7 @@ function Product(props) {
       quantity: toNumber(count),
       stock: product[0].stock,
       price: product[0].price,
+      totalPrice: toNumber(count) * product[0].price,
     };
 
     //product.count = addToCart;

@@ -1,5 +1,6 @@
 import React from "react";
 import Input from "./input";
+import _ from "lodash";
 
 function DisplayCart(props) {
   const {
@@ -11,6 +12,16 @@ function DisplayCart(props) {
     handleEdit,
     handleSubmit,
   } = props;
+
+  let total = 0;
+
+  {
+    cartData.map((cart) => {
+      const totalPrice = _.multiply(cart.price, cart.quantity);
+      total = total + totalPrice;
+    });
+  }
+
   return (
     <div>
       <table className="table table-sm">
@@ -18,9 +29,10 @@ function DisplayCart(props) {
           <tr>
             <th>Name</th>
             <th>Quantity</th>
-            <th>Price</th>
+            <th>Price per Quantity</th>
             <th></th>
             <th></th>
+            <th>Total Price</th>
           </tr>
         </thead>
         <tbody>
@@ -29,6 +41,7 @@ function DisplayCart(props) {
               <td>{cart.title}</td>
               <td>{cart.quantity}</td>
               <td>${cart.price}</td>
+
               <td>
                 <button
                   className="btn btn-danger"
@@ -45,8 +58,20 @@ function DisplayCart(props) {
                   Delete
                 </button>
               </td>
+              <td>${_.multiply(cart.price, cart.quantity)}</td>
             </tr>
           ))}
+          <tr>
+            <td></td>
+          </tr>
+          <tr>
+            <td className="h5">Total Amount</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>${total}</td>
+          </tr>
         </tbody>
       </table>
       {edit ? (

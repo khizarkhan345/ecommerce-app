@@ -16,6 +16,8 @@ export default (state = CartDefaultState, action) => {
             //console.log(newQuantity);
             const prevCart = { ...cart };
             prevCart.quantity = prevCart.quantity + action.product["quantity"];
+            // const newTotal = action.product["quantity"] * prevCart.price;
+            // prevCart.totalPrice = prevCart.totalPrice + newTotal;
             bool = true;
             return prevCart;
           } else {
