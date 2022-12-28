@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import { AddCartProduct } from "../Action/CartAction";
 import { ReduceStock } from "../Action/DataAction";
 import { toNumber } from "lodash";
+import ImageGallery from "react-image-gallery";
+import "./product.css";
 
 function Product(props) {
   const [addToCart, setAddToCart] = useState(0);
@@ -19,6 +21,15 @@ function Product(props) {
   console.log(product);
 
   //setProductData(product);
+
+  var Images = [];
+
+  product[0].images.map((p) => {
+    Images.push({
+      original: p,
+      thumbnail: p,
+    });
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -42,9 +53,10 @@ function Product(props) {
       <h1>Product Detail</h1>
       <div className="row m-1 hstack">
         <div className="col">
-          <img
-            src={product[0].images[0]}
-            style={{ width: "400px", height: "320px" }}
+          <ImageGallery
+            items={Images}
+            originalHeight="350px"
+            originalWidth="400px"
           />
         </div>
         <div className="col">

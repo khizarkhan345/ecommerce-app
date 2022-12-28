@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./displayProducts.css";
 import { Rating } from "react-simple-star-rating";
+import ImageGallery from "react-image-gallery";
 
 function DisplayProducts({ products }) {
   return (
