@@ -2,15 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./displayProducts.css";
 import { Rating } from "react-simple-star-rating";
-import ImageGallery from "react-image-gallery";
 
 function DisplayProducts({ products }) {
   return (
     <div className="container">
       <div className="row">
         {products.map((product) => (
-          <div className="col">
-            <div key={product.id} className="card product text-center m-1 ">
+          <div key={product.id} className="col">
+            <div className="card product text-center m-1 ">
               <img src={product.images[0]} alt="" className="product-image" />
               <h5 className="card-title product-header mt-3">
                 {product.title}
