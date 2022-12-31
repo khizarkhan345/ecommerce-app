@@ -6,6 +6,7 @@ import Products from "./components/products";
 import Contact from "./components/contact";
 import AboutUs from "./components/aboutUs";
 import Product from "./components/product";
+import Checkout from "./components/Checkout/checkout";
 
 function AppRoutes() {
   return (
@@ -19,6 +20,7 @@ function AppRoutes() {
             <Route path="/product/:id" element={<Product />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/aboutus" element={<AboutUs />} />
+            <Route path="/checkout" element={<Checkout />} />
           </Routes>
         </BrowserRouter>
       </div>

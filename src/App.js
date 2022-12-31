@@ -10,6 +10,7 @@ import Footer from "./components/Footer/footer";
 import TopBar from "./components/topBar";
 import BottomBar from "./components/Footer/bottomBar";
 import DisplayCartProducts from "./components/displayCartProducts";
+import Checkout from "./components/Checkout/checkout";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/aboutus" element={<AboutUs />} />
             <Route path="/cart" element={<DisplayCartProducts />} />
+            <Route path="/checkout" element={<Checkout />} />
           </Routes>
           <Footer />
           <BottomBar />
