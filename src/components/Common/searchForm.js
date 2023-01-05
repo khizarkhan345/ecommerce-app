@@ -1,5 +1,5 @@
 import React from "react";
-import { setSearchTerm } from "../Action/FilterAction";
+import { setSearchTerm } from "../../Action/FilterAction";
 import { connect } from "react-redux";
 
 function SearchForm(props) {

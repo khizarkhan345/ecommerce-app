@@ -1,5 +1,5 @@
 import React from "react";
-import Input from "./input";
+import Input from "../Common/input";
 import _ from "lodash";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";

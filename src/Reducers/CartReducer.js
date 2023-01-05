@@ -9,15 +9,11 @@ export default (state = CartDefaultState, action) => {
         return [...state, action.product];
       } else {
         let bool = false;
-        const oldState = [...state];
         const newState = state.map((cart) => {
           if (cart.id === action.id) {
-            //const newQuantity = action.product;
-            //console.log(newQuantity);
             const prevCart = { ...cart };
             prevCart.quantity = prevCart.quantity + action.product["quantity"];
-            // const newTotal = action.product["quantity"] * prevCart.price;
-            // prevCart.totalPrice = prevCart.totalPrice + newTotal;
+
             bool = true;
             return prevCart;
           } else {

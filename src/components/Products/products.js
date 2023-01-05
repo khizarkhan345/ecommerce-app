@@ -1,41 +1,36 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { getCategories } from "../apiData/category";
-import { getProducts } from "./../apiData/products";
-import Pagination from "./paginationComp";
+import { getCategories } from "../../apiData/category";
+import { getProducts } from "../../apiData/products";
+import Pagination from "../Common/paginationComp";
 import DisplayProducts from "./displayProducts";
-import ListCategory from "./listCategory";
-import DisplaySortOption from "./displaySortOption";
-import SearchForm from "./searchForm";
-import { paginate } from "./../utils/paginate";
-import { AddProduct } from "./../Action/DataAction";
-import { setFilterText, setCategoryFilter } from "../Action/FilterAction";
-import { SortBy } from "./../Action/FilterAction";
+import ListCategory from "../Common/listCategory";
+import DisplaySortOption from "../Common/displaySortOption";
+import SearchForm from "../Common/searchForm";
+import { paginate } from "../../utils/paginate";
+import { AddProduct } from "../../Action/DataAction";
+import { setFilterText, setCategoryFilter } from "../../Action/FilterAction";
+import { SortBy } from "../../Action/FilterAction";
 import _ from "lodash";
 import "./products.css";
 
 function Products(props) {
-  const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(6);
   const [sortOption, setSortOption] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("All-categories");
 
   useEffect(() => {
     const category = getCategories();
     const product = getProducts();
     setCategories([...category]);
-    //setProducts([...product]);
     props.dispatch(AddProduct(product));
-    //product.map((p) => props.dispatch(AddProduct(p)));
   }, []);
 
   const onCategoryChange = (category) => {
     props.dispatch(setFilterText(""));
-    //console.log("Condition true");
     setCurrentPage(1);
     props.dispatch(setCategoryFilter(category));
   };
@@ -70,18 +65,15 @@ function Products(props) {
         .includes(props.Filter.text.toLowerCase());
     });
 
-  //console.log("Search Data", filterSearchData);
-
   const finalData =
     props.Filter.text.length === 0 ? filteredData : filterSearchData;
 
-  //console.log("Final Data", finalData);
   const sortedData = _.orderBy(
     finalData,
     [props.Filter.sortBy],
     [props.Filter.orderBy]
   );
-  //console.log("Sorted DAta", sortedData);
+
   const paginateData = paginate(sortedData, currentPage, pageSize);
 
   return (
@@ -119,7 +111,6 @@ function Products(props) {
 }
 
 const mapStateToProps = (state) => {
-  //console.log(state);
   return {
     ProductData: state.ProductData,
     CartData: state.CartData,

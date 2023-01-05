@@ -1,6 +1,6 @@
 import React from "react";
 import "./footer.css";
-import Contact from "./../contact";
+import Contact from "../Contact/contact";
 import { Link } from "react-router-dom";
 function Footer() {
   return (

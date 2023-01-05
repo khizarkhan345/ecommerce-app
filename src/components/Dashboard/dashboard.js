@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { getProducts } from "../../apiData/products";
 import { AddProduct } from "../../Action/DataAction";
 import { connect } from "react-redux";
-import DisplayAllProduct from "../displayAllProduct";
+import DisplayAllProduct from "../Common/displayAllProduct";
 import "./dashboard.css";
 
 function Dashboard(props) {

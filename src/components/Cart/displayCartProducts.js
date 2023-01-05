@@ -1,8 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import { connect } from "react-redux";
-import { RemoveCartProduct, EditCartProduct } from "../Action/CartAction";
-import { AddStock, ReduceStock } from "../Action/DataAction";
+import { RemoveCartProduct, EditCartProduct } from "../../Action/CartAction";
+import { AddStock, ReduceStock } from "../../Action/DataAction";
 import DisplayCart from "./displayCart";
 import { toNumber } from "lodash";
 import "./displayCartProducts.css";

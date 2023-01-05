@@ -3,7 +3,7 @@ import React from "react";
 function DisplaySortOption({ sortValue, onSortOptionChange }) {
   return (
     <div>
-      <label for="select" className="form-label">
+      <label htmlFor="select" className="form-label">
         Sort By
       </label>
       <select

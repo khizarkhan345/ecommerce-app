@@ -1,5 +1,5 @@
 import React from "react";
-import { setCategoryFilter } from "../Action/FilterAction";
+import { setCategoryFilter } from "../../Action/FilterAction";
 
 function ListCategory({ categories, selectedCategory, onCategoryChange }) {
   return (
