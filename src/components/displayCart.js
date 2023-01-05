@@ -1,6 +1,9 @@
 import React from "react";
 import Input from "./input";
 import _ from "lodash";
+import { Link } from "react-router-dom";
+import Checkout from "./Checkout/checkout";
+import "./displayCart.css";
 
 function DisplayCart(props) {
   const {
@@ -63,10 +66,7 @@ function DisplayCart(props) {
           ))}
         </tbody>
       </table>
-      <div className="d-flex">
-        <h3 className="m-3">Total Amount</h3>
-        <h4 className="mt-3">${total}</h4>
-      </div>
+
       {edit ? (
         <Input
           value={inputValue}
@@ -76,6 +76,18 @@ function DisplayCart(props) {
       ) : (
         ""
       )}
+
+      <div className="d-flex justify-content-center">
+        <h3 className="m-3">Total Amount</h3>
+        <h4 className="mt-3 text-primary">${total}</h4>
+      </div>
+      <div className="text-center">
+        <button className="btn btn-primary text-center">
+          <Link to={`/checkout`} className="checkout-link">
+            Check Out
+          </Link>
+        </button>
+      </div>
     </div>
   );
 }

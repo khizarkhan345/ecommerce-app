@@ -51,7 +51,7 @@ function Product(props) {
 
   return (
     <div className="container">
-      <h1>Product Detail</h1>
+      <h1 className="text-center mb-4">{product[0].title}</h1>
       <div className="row m-1 hstack">
         <div className="col">
           <ImageGallery
@@ -60,8 +60,19 @@ function Product(props) {
             originalWidth="400px"
           />
         </div>
-        <div className="col">
-          <h3 className="mb-4">{product[0].title}</h3>
+        <div className="col mt-5">
+          <h3 className="desc-header">Description</h3>
+          <p className="mt-6">{product[0].description}</p>
+          <p className="mt-6">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+
           <form className="form-group hstack mt-3" onSubmit={handleSubmit}>
             <input
               type="number"
@@ -82,8 +93,10 @@ function Product(props) {
               Add to Cart
             </button>
           </form>
-          <p className="mt-6">{product[0].description}</p>
-          <p>Stock: {product[0].stock}</p>
+          <div className="d-flex mt-3">
+            <h5 className="stock-header">Available Quantity:</h5>
+            <p className="stock-title">{product[0].stock}</p>
+          </div>
         </div>
       </div>
     </div>

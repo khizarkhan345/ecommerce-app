@@ -49,9 +49,9 @@ function DisplayCartProducts(props) {
   };
   return (
     <div className="container cart">
-      <h2>Cart Data</h2>
+      <h2 className="text-center">Cart Data</h2>
       {props.cartData.length === 0 ? (
-        <p>Cart is Empty</p>
+        <p className="text-center mt-4 text-danger">Cart is Empty</p>
       ) : (
         <DisplayCart
           cartData={props.cartData}

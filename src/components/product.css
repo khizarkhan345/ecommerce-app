@@ -3,3 +3,19 @@
     width: 80%;
     height: auto;
 }
+
+.desc-header {
+    font-size: 30px;
+    color: var(--header);
+}
+
+.stock-header {
+   font-size: 20px;
+   margin-top: 3px;
+   margin-right: 5px;
+   color: var(--header);
+}
+
+.stock-title {
+   font-size: 20px;
+}
