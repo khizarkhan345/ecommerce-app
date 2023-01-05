@@ -54,7 +54,7 @@ function Product(props) {
     <div className="container">
       <h1 className="text-center mb-4">{product[0].title}</h1>
       <div className="row m-1 hstack">
-        <div className="col">
+        <div className="col image-gallery">
           <ImageGallery
             items={Images}
             originalHeight="350px"
