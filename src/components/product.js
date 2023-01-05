@@ -14,11 +14,12 @@ function Product(props) {
 
   const { id } = useParams();
 
+  console.log("Id:", id);
   //const products = getProducts();
 
   let product = props.ProductData.filter((product) => product.id == id);
 
-  console.log(product);
+  console.log("Product Details", product);
 
   //setProductData(product);
 
@@ -104,6 +105,7 @@ function Product(props) {
 }
 
 const mapStateToProps = (state) => {
+  console.log("Product state", state);
   return {
     ProductData: state.ProductData,
   };

@@ -2,7 +2,7 @@ import React from "react";
 import Input from "./input";
 import _ from "lodash";
 import { Link } from "react-router-dom";
-import Checkout from "./Checkout/checkout";
+
 import "./displayCart.css";
 
 function DisplayCart(props) {
@@ -18,12 +18,10 @@ function DisplayCart(props) {
 
   let total = 0;
 
-  {
-    cartData.map((cart) => {
-      const totalPrice = _.multiply(cart.price, cart.quantity);
-      total = total + totalPrice;
-    });
-  }
+  cartData.map((cart) => {
+    const totalPrice = _.multiply(cart.price, cart.quantity);
+    total = total + totalPrice;
+  });
 
   return (
     <div>

@@ -1,7 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./displayProducts.css";
-import { Rating } from "react-simple-star-rating";
 import DisplayAllProduct from "./displayAllProduct";
 
 function DisplayProducts({ products }) {

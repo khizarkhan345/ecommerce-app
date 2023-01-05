@@ -1,11 +1,8 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { getProducts } from "../../apiData/products";
-import SlideShow from "./slideShow";
 import { AddProduct } from "../../Action/DataAction";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import { Rating } from "react-simple-star-rating";
 import DisplayAllProduct from "../displayAllProduct";
 import "./dashboard.css";
 
@@ -16,7 +13,7 @@ function Dashboard(props) {
     //setProducts([...product]);
     props.dispatch(AddProduct(product));
     //product.map((p) => props.dispatch(AddProduct(p)));
-  }, []);
+  }, [props]);
 
   return (
     <div className="container">
