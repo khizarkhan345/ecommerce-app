@@ -21,8 +21,12 @@
 .product-link {
     text-decoration: none;
     color: white;
+    
 }
 
+.product-link:hover {
+    color: rgb(241, 227, 227);
+}
 
 @media screen and (min-width: 750px) {
     .product {
