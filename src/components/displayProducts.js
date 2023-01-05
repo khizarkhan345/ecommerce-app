@@ -1,5 +1,4 @@
 import React from "react";
-import "./displayProducts.css";
 import DisplayAllProduct from "./displayAllProduct";
 
 function DisplayProducts({ products }) {
