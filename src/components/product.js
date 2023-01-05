@@ -39,7 +39,7 @@ function Product(props) {
       id: product[0].id,
       title: product[0].title,
       quantity: toNumber(count),
-      stock: product[0].stock,
+      stock: product[0].stock - toNumber(count),
       price: product[0].price,
       totalPrice: toNumber(count) * product[0].price,
     };
@@ -79,6 +79,7 @@ function Product(props) {
               type="number"
               className="form-control"
               value={count}
+              min={1}
               max={product[0].stock}
               style={{ width: "8rem", height: "2.2rem" }}
               onChange={(e) => setCount(e.target.value)}

@@ -1,9 +1,8 @@
 import React from "react";
 import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
-import Products from "./components/products";
-import DisplayCartProducts from "./components/displayCartProducts";
+import "./navBar.css";
 
 function NavBar(props) {
   const [cartClicked, setCartClicked] = useState(false);
@@ -44,13 +43,9 @@ function NavBar(props) {
             padding: "2px",
           }}
         >
-          <NavLink
-            className="fa fa-shopping-cart fa-2x mt-1"
-            to="/cart"
-          ></NavLink>
-          <p style={{ fontSize: "1.8rem", marginLeft: "10px" }}>
-            Items({props.CartData.length})
-          </p>
+          <NavLink className="fa fa-shopping-cart fa-2x mt-1" to="/cart">
+            <p className="cart-item">Items({props.CartData.length})</p>
+          </NavLink>
         </li>
       </ul>
     </div>

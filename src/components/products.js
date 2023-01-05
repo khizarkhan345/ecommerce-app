@@ -26,10 +26,10 @@ function Products(props) {
 
   useEffect(() => {
     const category = getCategories();
-    //const product = getProducts();
+    const product = getProducts();
     setCategories([...category]);
     //setProducts([...product]);
-    //props.dispatch(AddProduct(product));
+    props.dispatch(AddProduct(product));
     //product.map((p) => props.dispatch(AddProduct(p)));
   }, []);
 

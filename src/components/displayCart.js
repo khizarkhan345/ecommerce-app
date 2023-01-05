@@ -2,7 +2,7 @@ import React from "react";
 import Input from "./input";
 import _ from "lodash";
 import { Link } from "react-router-dom";
-
+import { connect } from "react-redux";
 import "./displayCart.css";
 
 function DisplayCart(props) {
@@ -17,7 +17,7 @@ function DisplayCart(props) {
   } = props;
 
   let total = 0;
-
+  let stock = 0;
   cartData.map((cart) => {
     const totalPrice = _.multiply(cart.price, cart.quantity);
     total = total + totalPrice;
@@ -37,31 +37,37 @@ function DisplayCart(props) {
           </tr>
         </thead>
         <tbody>
-          {cartData.map((cart) => (
-            <tr key={cart.id}>
-              <td>{cart.title}</td>
-              <td>{cart.quantity}</td>
-              <td>${cart.price}</td>
+          {cartData.map((cart) => {
+            const product = props.ProductData.filter(
+              (product) => product.id == cart.id
+            );
+            stock = product[0].stock;
+            return (
+              <tr key={cart.id}>
+                <td>{cart.title}</td>
+                <td>{cart.quantity}</td>
+                <td>${cart.price}</td>
 
-              <td>
-                <button
-                  className="btn btn-danger btn-sm"
-                  onClick={() => handleEdit(cart.id, cart.quantity)}
-                >
-                  Edit
-                </button>
-              </td>
-              <td>
-                <button
-                  className="btn btn-danger btn-sm"
-                  onClick={() => handleDelete(cart.id, cart.quantity)}
-                >
-                  Delete
-                </button>
-              </td>
-              <td>${_.multiply(cart.price, cart.quantity)}</td>
-            </tr>
-          ))}
+                <td>
+                  <button
+                    className="btn btn-danger btn-sm"
+                    onClick={() => handleEdit(cart.id, cart.quantity)}
+                  >
+                    Edit
+                  </button>
+                </td>
+                <td>
+                  <button
+                    className="btn btn-danger btn-sm"
+                    onClick={() => handleDelete(cart.id, cart.quantity)}
+                  >
+                    Delete
+                  </button>
+                </td>
+                <td>${_.multiply(cart.price, cart.quantity)}</td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
 
@@ -70,6 +76,8 @@ function DisplayCart(props) {
           value={inputValue}
           handleChange={handleInput}
           handleSubmit={handleSubmit}
+          min={1}
+          max={stock}
         />
       ) : (
         ""
@@ -90,4 +98,9 @@ function DisplayCart(props) {
   );
 }
 
-export default DisplayCart;
+const mapStateToProps = (state) => {
+  return {
+    ProductData: state.ProductData,
+  };
+};
+export default connect(mapStateToProps)(DisplayCart);

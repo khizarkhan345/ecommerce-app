@@ -1,6 +1,6 @@
 .product {
     width: 20rem;
-
+    margin-right: 0;
 }
 
 .product-image {
@@ -36,10 +36,10 @@
 
 @media screen and (min-width: 1000px) {
     .product {
-        width: 18rem;
+        width: 14rem;
     }
 
     .product-image {
-        width: 18rem;
+        width: 14rem;
     }
 }

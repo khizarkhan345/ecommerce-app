@@ -7,7 +7,7 @@ function DisplayAllProduct(props) {
   const { id, image, title, price, rating } = props;
   return (
     <div className="col mt-3 mb-3">
-      <div key={id} className="card product text-center">
+      <div key={id} className="card product text-center m-0">
         <img src={image} alt="" className="product-image" />
         <h5 className="card-title mt-3">{title}</h5>
         <p className="card-text"> ${price}</p>
