@@ -1,0 +1,45 @@
+.product {
+    width: 11rem;
+
+}
+
+.product-image {
+    height: 12rem;
+    width: 20rem;
+}
+
+.product-header {
+    font-size: 15px;
+}
+
+
+.product-button {
+    width: 5rem;
+    align-self: center;
+}
+
+.product-link {
+    text-decoration: none;
+    color: white;
+}
+
+
+@media screen and (min-width: 750px) {
+    .product {
+        width: 13rem;
+    }
+
+    .product-image {
+        width: 13rem;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .product {
+        width: 18rem;
+    }
+
+    .product-image {
+        width: 18rem;
+    }
+}

@@ -29,7 +29,7 @@ function DisplayCart(props) {
           <tr>
             <th>Name</th>
             <th>Quantity</th>
-            <th>Price per Quantity</th>
+            <th>Unit Price</th>
             <th></th>
             <th></th>
             <th>Total Price</th>
@@ -44,15 +44,15 @@ function DisplayCart(props) {
 
               <td>
                 <button
-                  className="btn btn-danger"
+                  className="btn btn-danger btn-sm"
                   onClick={() => handleEdit(cart.id, cart.quantity)}
                 >
-                  Edit Quantity
+                  Edit
                 </button>
               </td>
               <td>
                 <button
-                  className="btn btn-danger"
+                  className="btn btn-danger btn-sm"
                   onClick={() => handleDelete(cart.id, cart.quantity)}
                 >
                   Delete
@@ -61,19 +61,12 @@ function DisplayCart(props) {
               <td>${_.multiply(cart.price, cart.quantity)}</td>
             </tr>
           ))}
-          <tr>
-            <td></td>
-          </tr>
-          <tr>
-            <td className="h5">Total Amount</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>${total}</td>
-          </tr>
         </tbody>
       </table>
+      <div className="d-flex">
+        <h3 className="m-3">Total Amount</h3>
+        <h4 className="mt-3">${total}</h4>
+      </div>
       {edit ? (
         <Input
           value={inputValue}

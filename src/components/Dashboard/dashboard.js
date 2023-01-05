@@ -6,6 +6,7 @@ import { AddProduct } from "../../Action/DataAction";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { Rating } from "react-simple-star-rating";
+import DisplayAllProduct from "../displayAllProduct";
 import "./dashboard.css";
 
 function Dashboard(props) {
@@ -19,39 +20,21 @@ function Dashboard(props) {
 
   return (
     <div className="container">
-      <h2>Best Selling Products</h2>
-      <div className="row container m-md-2 ">
+      <h2 className="text-center">Best Selling Products</h2>
+      <div className="row container m-0">
         {props.ProductData.map((product) => {
           if (product.id > 6) {
             return " ";
           } else {
             return (
-              <div className="col">
-                <div key={product.id} className="card product text-center m-1">
-                  <img
-                    src={product.images[0]}
-                    alt=""
-                    style={{ height: "12rem" }}
-                  />
-                  <h5 className="card-title mt-3">{product.title}</h5>
-                  <p className="card-text"> ${product.price}</p>
-                  <Rating
-                    initialValue={product.rating}
-                    size={25}
-                    allowFraction
-                    fillColor="orange"
-                    emptyColor="gray"
-                  />
-                  <button className="btn btn-primary product-button m-2">
-                    <Link
-                      to={`/product/${product.id}`}
-                      className="product-link"
-                    >
-                      View
-                    </Link>
-                  </button>
-                </div>
-              </div>
+              <DisplayAllProduct
+                key={product.id}
+                id={product.id}
+                image={product.images[0]}
+                title={product.title}
+                price={product.price}
+                rating={product.rating}
+              />
             );
           }
         })}

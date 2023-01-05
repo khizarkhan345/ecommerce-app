@@ -1,6 +1,4 @@
-.product {
-    width: 16rem;
-}
+
 
 .product-image {
     height: 12rem;
@@ -9,6 +7,7 @@
 .product-header {
     font-size: 15px;
 }
+
 
 .product-button {
     width: 5rem;
@@ -19,3 +18,4 @@
     text-decoration: none;
     color: white;
 }
+
